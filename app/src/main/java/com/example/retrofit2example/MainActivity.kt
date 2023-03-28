@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         // find Recycler View
         recyclerView = findViewById(R.id.recyclerView)
+        // set layout manager for recycler view
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         allProductsLiveData.observe(this, Observer {
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("Product","${product.title} * Rating: ${product.rating.rate}/${product.rating.count}")
                 }
             }
+            // set adapter
             val adapter = it.body()?.let { it1 -> ProductsAdapter(it1) }
             recyclerView.adapter = adapter
             adapter?.notifyDataSetChanged()
